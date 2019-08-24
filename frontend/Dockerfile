@@ -4,6 +4,7 @@ COPY src/frontend /app
 
 WORKDIR /app
 
+# Instalacao das dependencias da aplicacao
 RUN pip install -r requirements.txt
 
 ENTRYPOINT ["python"]
