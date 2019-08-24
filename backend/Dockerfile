@@ -14,11 +14,11 @@ ENV CGO_ENABLED 1
 
 COPY src/backend/main.go src/
 
-RUN apk add --no-cache git mercurial \
+RUN apk add --no-cache git \
     && go get github.com/gorilla/mux \
     && go get github.com/sirupsen/logrus \
 	&& go get github.com/mattn/go-sqlite3 \
-    && apk del git mercurial \
+    && apk del git \
 	&& go build src/main.go
 
 ENTRYPOINT [ "/go/main" ]
