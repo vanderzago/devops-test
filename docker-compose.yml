@@ -1,0 +1,25 @@
+version: '3'
+services:
+  go-backend:
+    build:
+      context: ./backend
+    image: vanderz/go-backend
+    container_name: back-server
+    ports:
+      - "8080:8080"
+    networks: 
+      - production-network
+  py-frontend:
+    build:
+      context: ./frontend
+    image: vanderz/py-frontend
+    container_name: front-server
+    ports:
+      - "8000:8000"
+    networks:
+      - production-network
+    depends_on:
+      - "go-backend"
+networks:
+  production-network:
+    driver: bridge
